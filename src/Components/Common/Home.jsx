@@ -12,6 +12,11 @@ import Navbar  from './Navbar';
 import Footer from './Footer';
 import { useInView } from 'react-intersection-observer';
 
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+import { motion } from 'framer-motion';
+
 function Home() {
   const [show, setShow] = useState(false);
     useEffect(() => {
@@ -25,6 +30,7 @@ function Home() {
     return () => clearTimeout(timer); // Cleanup if component unmounts
   }, []);
 
+    const [isHover,setIsHover]=useState(false);
   
   const [ref, inView] = useInView({
     threshold: 0.40, 
@@ -93,9 +99,9 @@ function Home() {
   return (
     <div className='overflow-x-hidden'>
       <Navbar />
-      <div  className="relative  text-white py-44"  >
+      <div id='home'  className="relative  text-white py-44"  >
         
-        <div
+        <div 
           className="absolute inset-0"
           style={{
             backgroundImage: `url(${img})`,
@@ -125,13 +131,36 @@ function Home() {
             <p className="text-md xl:text-2xl mb-4 xl:ml-52">
               Join WorkHive to bridge your needs with <br />tailored freelance services.
             </p>
-            <button className="bg-[#213555] text-white font-semibold py-4 px-12 rounded-lg hover:text-[#213555] hover:bg-gray-100 transition">
-              Get Started
-            </button>
+           
+             <section> 
+               <div className='button relative cursor-pointer flex items-center justify-center bg-[#213555] w-fit rounded-xl py-[19px] px-16 overflow-clip'
+                onMouseEnter={(e)=>setIsHover(true)}
+                onMouseLeave={(e)=>setIsHover(false)}>
+                   <motion.div className='circle absolute left-[22px] w-[6px] h-[6px] bg-[#ffff] rounded-3xl ' 
+                   animate ={{
+                     scale:isHover ? 65: 1,
+                     backgroundColor:isHover?"#ffff":"#ffff",
+                     
+                   }}
+                   transition={{ease:"easeIn",
+                     duration:0.2,
+                   }}> </motion.div>
+                   <motion.div className='title font-medium tracking-tighter text-[19px] z-10 ' 
+                   animate={{x:isHover?-8:8,
+                     color:isHover?"#213555":"#ffff",
+                   }}> <p>Get Started</p>
+                   
+                   </motion.div>
+                   <motion.div className='absolute  flex items-center  right-[22px]'
+                   animate={{x:isHover?0 :24,}}>
+                  <FontAwesomeIcon className='w-[26px] h-[26px] text-[#213555] stroke-<2> ' icon={faArrowRight} />
+                   </motion.div>
+               </div>
+             </section>
           </div>
         </div>
       </div>
-      <section>
+      <section id='about'>
       <div >
       <div className=" flex flex-col md:flex-row w-screen">
         
@@ -156,20 +185,19 @@ function Home() {
             Why Choose WorkHive?
           </h2>
           <p className="text-gray-800 text-lg ml-12 md:w-1/2 font-bold leading-relaxed">
-            WorkHive connects clients and freelancers seamlessly. With
-            admin-led operations, you get quality and reliability in every
-            interaction.
-          </p>
+  WorkHive connects clients and freelancers seamlessly. With admin-led operations, you get quality and reliability in every interaction. Our platform ensures that projects are managed efficiently and securely. Whether you're a freelancer looking for opportunities or a client searching for the right talent, WorkHive provides the perfect solution to meet your needs.
+</p>
+
         </div>
       </div>
     </div>
       </section>
-      <section>
+      <section id='services'>
         <div className="md:p-10 mt-20">
           <div className="grid md:grid-cols-3 grid-cols-1 gap-8">
             {grid.map((item, index) => {
               const [ref, inView] = useInView({
-                threshold: 0.3, 
+                 threshold: 0.3, 
                 triggerOnce: true,
               });
 
@@ -177,7 +205,7 @@ function Home() {
                 <div
                   key={item.id}
                   ref={ref}
-                  className={`py-8 shadow-xl w-[70%] mx-auto transition-all duration-700 delay-${index * 100} ease-in-out ${
+                  className={`py-8 shadow-xl w-[70%] mx-auto transition-all rounded duration-700 delay-${index * 100} ease-in-out ${
                     inView
                       ? 'opacity-100 translate-y-0'
                       : 'opacity-0 translate-y-10'
@@ -208,7 +236,33 @@ function Home() {
             backgroundPosition: 'center',}}>
          <div className=' bg-[#213555] bg-opacity-50 h-full py-20 w-full'>
          <h1 className='text-6xl text-white font-semibold text-center'>READY TO GET STARTED?</h1> 
-         <div className='w-full flex justify-center mt-36 '><button className='rounded-xl px-20 py-5 font-semibold text-white text-2xl hover:bg-white hover:text-[#213555] delay-400 ease-in-out bg-[#213555]'>Join now</button></div></div> </div>
+         <div className='w-full flex justify-center mt-36 '>
+         <section> 
+    <div className='button relative cursor-pointer flex items-center justify-center bg-[#213555] w-fit rounded-xl py-[16px] px-20 overflow-clip'
+     onMouseEnter={(e)=>setIsHover(true)}
+     onMouseLeave={(e)=>setIsHover(false)}>
+        <motion.div className='circle absolute left-[22px] w-[6px] h-[6px] bg-[#ffff] rounded-3xl ' 
+        animate ={{
+          scale:isHover ? 82: 1,
+          backgroundColor:isHover?"#ffff":"#ffff",
+          
+        }}
+        transition={{ease:"easeIn",
+          duration:0.2,
+        }}> </motion.div>
+        <motion.div className='title  tracking-tighter font-semibold text-[22px] z-10 ' 
+        animate={{x:isHover?-8:8,
+          color:isHover?"#213555":"#ffff",
+        }}> <p>Join Now</p>
+        
+        </motion.div>
+        <motion.div className='absolute  flex items-center  right-[22px]'
+        animate={{x:isHover?0 :24,}}>
+       <FontAwesomeIcon className='w-[24px] h-[24px] text-[#213555]  stroke-<2> ' icon={faArrowRight} />
+        </motion.div>
+    </div>
+  </section>
+  </div></div> </div>
       </section>
       <Footer/>
     </div>
