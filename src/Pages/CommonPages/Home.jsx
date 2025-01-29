@@ -8,14 +8,15 @@ import grid3 from '../../images/top-view-game-domino.jpg';
 import grid4 from '../../images/credit-card-security-concept.jpg';
 import grid5 from '../../images/top-view-women-working-together-office.jpg';
 import grid6 from '../../images/pexels-picjumbo-com-55570-210644.jpg';
-import Navbar  from './Navbar';
-import Footer from './Footer';
+import Navbar  from '../../Components/Common/CommonComponents/Navbar';
+import Footer from '../../Components/Common/CommonComponents/Footer';
 import { useInView } from 'react-intersection-observer';
 
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 function Home() {
   const [show, setShow] = useState(false);
@@ -31,6 +32,7 @@ function Home() {
   }, []);
 
     const [isHover,setIsHover]=useState(false);
+    const [isHover1,setIsHover1]=useState(false);
   
   const [ref, inView] = useInView({
     threshold: 0.40, 
@@ -133,7 +135,7 @@ function Home() {
             </p>
            
              <section> 
-               <div className='button relative cursor-pointer flex items-center justify-center bg-[#213555] w-fit rounded-xl py-[19px] px-16 overflow-clip'
+               <Link to="/SignUp" className='button relative cursor-pointer flex items-center justify-center bg-[#213555] w-fit rounded-xl py-[19px] px-16 overflow-clip'
                 onMouseEnter={(e)=>setIsHover(true)}
                 onMouseLeave={(e)=>setIsHover(false)}>
                    <motion.div className='circle absolute left-[22px] w-[6px] h-[6px] bg-[#ffff] rounded-3xl ' 
@@ -155,7 +157,7 @@ function Home() {
                    animate={{x:isHover?0 :24,}}>
                   <FontAwesomeIcon className='w-[26px] h-[26px] text-[#213555] stroke-<2> ' icon={faArrowRight} />
                    </motion.div>
-               </div>
+               </Link>
              </section>
           </div>
         </div>
@@ -238,12 +240,12 @@ function Home() {
          <h1 className='text-6xl text-white font-semibold text-center'>READY TO GET STARTED?</h1> 
          <div className='w-full flex justify-center mt-36 '>
          <section> 
-    <div className='button relative cursor-pointer flex items-center justify-center bg-[#213555] w-fit rounded-xl py-[16px] px-20 overflow-clip'
-     onMouseEnter={(e)=>setIsHover(true)}
-     onMouseLeave={(e)=>setIsHover(false)}>
+    <Link to="/SignUp" className='button relative cursor-pointer flex items-center justify-center bg-[#213555] w-fit rounded-xl py-[16px] px-20 overflow-clip'
+     onMouseEnter={(e)=>setIsHover1(true)}
+     onMouseLeave={(e)=>setIsHover1(false)}>
         <motion.div className='circle absolute left-[22px] w-[6px] h-[6px] bg-[#ffff] rounded-3xl ' 
         animate ={{
-          scale:isHover ? 82: 1,
+          scale:isHover1 ? 82: 1,
           backgroundColor:isHover?"#ffff":"#ffff",
           
         }}
@@ -251,16 +253,16 @@ function Home() {
           duration:0.2,
         }}> </motion.div>
         <motion.div className='title  tracking-tighter font-semibold text-[22px] z-10 ' 
-        animate={{x:isHover?-8:8,
-          color:isHover?"#213555":"#ffff",
+        animate={{x:isHover1?-8:8,
+          color:isHover1?"#213555":"#ffff",
         }}> <p>Join Now</p>
         
         </motion.div>
         <motion.div className='absolute  flex items-center  right-[22px]'
-        animate={{x:isHover?0 :24,}}>
+        animate={{x:isHover1?0 :24,}}>
        <FontAwesomeIcon className='w-[24px] h-[24px] text-[#213555]  stroke-<2> ' icon={faArrowRight} />
         </motion.div>
-    </div>
+    </Link>
   </section>
   </div></div> </div>
       </section>

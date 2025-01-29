@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const [scrollDirection, setScrollDirection] = useState("scroll-up");
@@ -79,9 +80,9 @@ function Navbar() {
               </a>
             </li>
             <li>
-              <button className="text-xl">
+              <Link to="/SignUp" className="text-xl">
                 <FontAwesomeIcon icon={faUser} />
-              </button>
+              </Link>
             </li>
           </ul>
         </div>
