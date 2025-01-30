@@ -8,7 +8,8 @@ import grid3 from '../../images/top-view-game-domino.jpg';
 import grid4 from '../../images/credit-card-security-concept.jpg';
 import grid5 from '../../images/top-view-women-working-together-office.jpg';
 import grid6 from '../../images/pexels-picjumbo-com-55570-210644.jpg';
-import Navbar  from '../../Components/Common/CommonComponents/Navbar';
+
+
 import Footer from '../../Components/Common/CommonComponents/Footer';
 import { useInView } from 'react-intersection-observer';
 
@@ -17,6 +18,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { Navbarone } from '../../Components/Common/CommonComponents/Navbar';
 
 function Home() {
   const [show, setShow] = useState(false);
@@ -35,11 +37,11 @@ function Home() {
     const [isHover1,setIsHover1]=useState(false);
   
   const [ref, inView] = useInView({
-    threshold: 0.40, 
+    threshold: 0.20, 
     triggerOnce: true,
   });
   const [ref1, inView1] = useInView({
-    threshold: 0.40, 
+    threshold: 0.20, 
     triggerOnce: true,
   });
   const [ref2, inView2] = useInView({
@@ -100,7 +102,7 @@ function Home() {
   ];
   return (
     <div className='overflow-x-hidden'>
-      <Navbar />
+      <Navbarone />
       <div id='home'  className="relative  text-white py-44"  >
         
         <div 
@@ -135,7 +137,7 @@ function Home() {
             </p>
            
              <section> 
-               <Link to="/SignUp" className='button relative cursor-pointer flex items-center justify-center bg-[#213555] w-fit rounded-xl py-[19px] px-16 overflow-clip'
+               <Link to="/Getting" className='button relative cursor-pointer flex items-center justify-center bg-[#213555] w-fit rounded-xl py-[19px] px-16 overflow-clip'
                 onMouseEnter={(e)=>setIsHover(true)}
                 onMouseLeave={(e)=>setIsHover(false)}>
                    <motion.div className='circle absolute left-[22px] w-[6px] h-[6px] bg-[#ffff] rounded-3xl ' 
@@ -166,7 +168,7 @@ function Home() {
       <div >
       <div className=" flex flex-col md:flex-row w-screen">
         
-        <div ref={ref} className={`flex py-20 md:w-1/2 lg:px-40 bg-[#D8C4B6] justify-center transform duration-1000 ease-out transition-all delay-300 overflow-hidden ${
+        <div ref={ref} className={`flex py-20 md:w-1/2 lg:px-40 bg-[#D8C4B6] justify-center transform duration-1000 ease-out transition-all delay-200 overflow-hidden ${
         inView
           ? "opacity-100 translate-x-0"
           : "opacity-0 -translate-x-44"
@@ -199,7 +201,7 @@ function Home() {
           <div className="grid md:grid-cols-3 grid-cols-1 gap-8">
             {grid.map((item, index) => {
               const [ref, inView] = useInView({
-                 threshold: 0.3, 
+                 threshold: 0.2, 
                 triggerOnce: true,
               });
 
@@ -240,7 +242,7 @@ function Home() {
          <h1 className='text-6xl text-white font-semibold text-center'>READY TO GET STARTED?</h1> 
          <div className='w-full flex justify-center mt-36 '>
          <section> 
-    <Link to="/SignUp" className='button relative cursor-pointer flex items-center justify-center bg-[#213555] w-fit rounded-xl py-[16px] px-20 overflow-clip'
+    <Link to="/Getting" className='button relative cursor-pointer flex items-center justify-center bg-[#213555] w-fit rounded-xl py-[16px] px-20 overflow-clip'
      onMouseEnter={(e)=>setIsHover1(true)}
      onMouseLeave={(e)=>setIsHover1(false)}>
         <motion.div className='circle absolute left-[22px] w-[6px] h-[6px] bg-[#ffff] rounded-3xl ' 
