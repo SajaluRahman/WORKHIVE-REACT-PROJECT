@@ -1,6 +1,6 @@
 import React from "react";
 import image from "../../images/pexels-cottonbro-4065876.jpg";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { Navbarscnd } from "../../Components/Common/CommonComponents/Navbar";
@@ -49,9 +49,9 @@ const Login = () => {
             </button>
           </div>
 
-          <Link to="/UserHome" className="bg-[#0A2647] text-white text-center px-6 py-3 mt-6 rounded-lg w-full text-lg font-semibold hover:bg-[#081b31] transition">
+          <NavLink to="/UserHome" className="bg-[#0A2647] text-white text-center px-6 py-3 mt-6 rounded-lg w-full text-lg font-semibold hover:bg-[#081b31] transition">
             Submit
-          </Link>
+          </NavLink>
         </div>
 
         {/* Right Side: Image and Text (Appears First on Mobile) */}

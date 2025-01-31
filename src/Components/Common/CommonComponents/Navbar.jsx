@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { faUser } from "@fortawesome/free-regular-svg-icons";
+import { faComment,  faNoteSticky,  faUser } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faXmark,faSearch, faBell, faCommentDots, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faXmark,faSearch,   faTimes } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 
@@ -203,7 +203,7 @@ export const Navbar3 = () => {
 
   return (
     <nav
-      className={`bg-[#1E3A5F] text-white px-6 py-3 flex items-center justify-between w-full shadow-md fixed top-0 z-10 transition-transform duration-300 ease-in-out 
+      className={`bg-[#1E3A5F] text-white px-6 py-3 flex items-center justify-between w-full shadow-md fixed top-0 z-50 transition-transform duration-300 ease-in-out 
         ${scrollDirection === "scroll-down" ? "-translate-y-full" : "translate-y-0"} 
         ${scrollDirection === "scroll-up" && isScrolled ? "shadow-2xl shadow-black" : ""}`}
     >
@@ -212,12 +212,12 @@ export const Navbar3 = () => {
         Work<span className="text-gray-300">Hive</span>
       </h1>
 
-      {/* Search Bar */}
+      {/* Search Bar (Hidden on Mobile) */}
       <div className="hidden md:flex relative w-full max-w-xs">
         <input
           type="text"
           placeholder="Search"
-          className="w-full px-4 py-2  pl-10 rounded-md text-gray-800 focus:outline-none bg-gray-200"
+          className="w-full px-4 py-2 pl-10 rounded-md text-gray-800 focus:outline-none bg-gray-200"
         />
         <FontAwesomeIcon
           icon={faSearch}
@@ -225,11 +225,32 @@ export const Navbar3 = () => {
         />
       </div>
 
-      {/* Desktop Icons */}
+      {/* Desktop Icons with Hover Tooltips */}
       <div className="hidden md:flex space-x-6 text-xl">
-        <FontAwesomeIcon icon={faCommentDots} className="cursor-pointer hover:text-gray-300" />
-        <FontAwesomeIcon icon={faBell} className="cursor-pointer hover:text-gray-300" />
-        <FontAwesomeIcon icon={faUser} className="cursor-pointer hover:text-gray-300" />
+        {/* Chat Icon */}
+        <div className="relative group">
+          <Link to='/Chat'>
+          <FontAwesomeIcon icon={faComment} className="cursor-pointer hover:text-gray-300" /></Link>
+          <span className="absolute -top-5 left-1/2 -translate-x-1/2 bg-[#333333] text-white text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            Chat
+          </span>
+        </div>
+
+        {/* Notepad Icon */}
+        <div className="relative group">
+          <FontAwesomeIcon icon={faNoteSticky} className="cursor-pointer hover:text-gray-300" />
+          <span className="absolute -top-5 left-1/2 -translate-x-1/2 bg-[#333] text-white text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            Notepad
+          </span>
+        </div>
+
+        {/* Profile Icon */}
+        <div className="relative group">
+          <FontAwesomeIcon icon={faUser} className="cursor-pointer hover:text-gray-300" />
+          <span className="absolute -top-5 left-1/2 -translate-x-1/2 bg-[#333] text-white text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            Profile
+          </span>
+        </div>
       </div>
 
       {/* Mobile Menu Toggle */}
@@ -239,28 +260,38 @@ export const Navbar3 = () => {
 
       {/* Mobile Dropdown Menu */}
       <div
-  className={`absolute top-full left-0 w-full bg-[#1E3A5F] text-white flex flex-col items-center space-y-4 py-4 transition-all duration-300 ease-in-out md:hidden
-    ${isMenuOpen ? "opacity-100 translate-y-0 visible" : "opacity-0 -translate-y-5 invisible"}`}
->
-        <div className="relative pl-5  w-full max-w-xs">
+        className={`absolute top-full left-0 w-full bg-[#1E3A5F] text-white flex flex-col items-center space-y-4 py-4 transition-all duration-300 ease-in-out md:hidden
+          ${isMenuOpen ? "opacity-100 translate-y-0 visible" : "opacity-0 -translate-y-5 invisible"}`}
+      >
+        {/* Mobile Search Bar */}
+        <div className="relative pl-5 w-full max-w-xs">
           <input
             type="text"
             placeholder="Search"
-            className="w-full px-4 py-2 rounded-md text-gray-800 focus:outline-none bg-gray-200"
+            className="w-full px-4 py-2 pl-6   rounded-md text-gray-800 focus:outline-none bg-gray-200"
           />
           <FontAwesomeIcon
             icon={faSearch}
-            className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+            className="absolute left-6 top-1/2 transform -translate-y-1/2 text-gray-500"
           />
         </div>
-       <div className="space-x-10">
-       <FontAwesomeIcon icon={faCommentDots} className="cursor-pointer hover:text-gray-300 text-2xl" />
-        <FontAwesomeIcon icon={faBell} className="cursor-pointer hover:text-gray-300 text-2xl" />
-        <FontAwesomeIcon icon={faUser} className="cursor-pointer hover:text-gray-300 text-2xl" />
-       </div>
+
+        {/* Mobile Icons with Labels */}
+        <div className="flex flex-col items-center space-y-4">
+          <div className="flex items-center space-x-2">
+           <Link to="/Chat"> <FontAwesomeIcon icon={faComment} className="cursor-pointer hover:text-gray-300   text-2xl" /> 
+            <span>Chat</span></Link>
+          </div>
+          <div className="flex items-center space-x-2">
+            <FontAwesomeIcon icon={faNoteSticky} className="cursor-pointer hover:text-gray-300  text-2xl" />
+            <span>Notepad</span>
+          </div>
+          <div className="flex items-center space-x-2">
+            <FontAwesomeIcon icon={faUser} className="cursor-pointer hover:text-gray-300  text-2xl" />
+            <span>Profile</span>
+          </div>
+        </div>
       </div>
     </nav>
   );
 };
-
-
