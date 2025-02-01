@@ -36,7 +36,7 @@ const Login = () => {
           />
           <p className="text-[#213555] text-lg text-center md:text-left">
             Don’t have an account?{" "}
-            <Link to="/SignUp" className="text-blue-400 font-semibold">Signup</Link>
+            <Link to="/signUp" className="text-blue-400 font-semibold">Signup</Link>
           </p>
           
           {/* Social Login Buttons */}
@@ -49,7 +49,7 @@ const Login = () => {
             </button>
           </div>
 
-          <NavLink to="/UserHome" className="bg-[#0A2647] text-white text-center px-6 py-3 mt-6 rounded-lg w-full text-lg font-semibold hover:bg-[#081b31] transition">
+          <NavLink to="/userHome" className="bg-[#0A2647] text-white text-center px-6 py-3 mt-6 rounded-lg w-full text-lg font-semibold hover:bg-[#081b31] transition">
             Submit
           </NavLink>
         </div>

@@ -7,12 +7,16 @@ import {
   faEllipsisV,
   faArrowLeft,
   faBars,
+  faCircleDollarToSlot,
+  faChartSimple,
 } from "@fortawesome/free-solid-svg-icons";
 import img1 from "../../images/pexels-rfera-432059.jpg";
 import "../../App.css";
 import Sidebar from "../../Components/FreelancerComponents/Sidebar";
+import { faPaypal } from "@fortawesome/free-brands-svg-icons";
+import { Link } from "react-router-dom";
 
-const Chat = () => {
+function Chat  ()  {
   const contacts = ["Maymood", "Sarah", "Usman", "Michael", "Emily", "David", "Sophia"];
   const [activeChat, setActiveChat] = useState("Maymood");
   const [messages, setMessages] = useState([
@@ -42,18 +46,18 @@ const [sidebarOpen, setSidebarOpen] = useState(false);
       {/* Sidebar Toggle Button (for mobile) */}
       <button
         onClick={() => setSidebarOpen(!sidebarOpen)}
-        className="md:hidden fixed top-8 left- z-50 text-white  p-2 rounded-full shadow-md"
+        className="lg:hidden fixed top-8 left- z-50 text-white  p-2 rounded-full shadow-md"
       >
         <FontAwesomeIcon icon={faBars} size="lg" />
       </button>
       {/* Sidebar (Hidden on small screens, toggled on click) */}
-      <div className={`fixed md:relative inset-y-0 left-0 z-40 transform ${sidebarOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0 transition-transform duration-300 ease-in-out w-64 bg-[#0a0f1f] md:block`}>  
+      <div className={`fixed lg:relative inset-y-0 left-0 z-40 transform ${sidebarOpen ? "translate-x-0" : "-translate-x-full"} lg:translate-x-0 transition-transform duration-300 ease-in-out w-64 bg-[#0a0f1f] lg:block`}>  
         <Sidebar />
       </div>
 
       {/* Contact List Sidebar */}
       <div className={`h-screen bg-gradient-to-b from-[#1f293d] to-[#12182b] p-4 text-white flex flex-col shadow-xl backdrop-blur-md border-r border-[#00eaff]/50 
-  ${isChatOpen ? 'hidden md:flex' : 'w-full sm:w-64 md:w-72 lg:w-80'}`}>
+  ${isChatOpen ? 'hidden md:flex lg:w-80' : 'w-full sm:w-64 md:w-72 lg:w-80'}`}>
         <div className="text-2xl font-bold tracking-wide mb-6 text-[#00eaff] text-center">WorkHive</div>
 
         <div className="flex items-center mb-6 cursor-pointer text-gray-300 hover:text-white transition" onClick={() => setIsChatOpen(false)}>
@@ -108,7 +112,8 @@ const [sidebarOpen, setSidebarOpen] = useState(false);
             onChange={(e) => setInputText(e.target.value)}
             onKeyPress={(e) => e.key === "Enter" && sendMessage()}
           />
-          <FontAwesomeIcon icon={faSmile} className="text-gray-500 text-xl cursor-pointer hover:text-white transition" />
+         <Link to="/progressionTracker"><FontAwesomeIcon icon={faChartSimple} className="text-gray-500 text-xl cursor-pointer hover:text-white transition" /> </Link>
+          <FontAwesomeIcon icon={faCircleDollarToSlot} className="text-gray-500 text-xl cursor-pointer hover:text-white transition" />
           <FontAwesomeIcon icon={faMicrophone} className="text-gray-500 text-xl cursor-pointer hover:text-white transition" />
           <FontAwesomeIcon icon={faPaperPlane} className="text-[#00eaff] text-xl cursor-pointer hover:text-[#00b3cc] transition" onClick={sendMessage} />
         </div>

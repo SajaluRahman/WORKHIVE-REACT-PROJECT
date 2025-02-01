@@ -6,6 +6,7 @@ import img1 from "../../images/pexels-rfera-432059.jpg";
 import { Navbar3 } from "../../Components/Common/CommonComponents/Navbar";
 import Sidebar from "../../Components/FreelancerComponents/Sidebar";
 import '../../App.css'
+import { Link } from "react-router-dom";
 
 const JobCard = ({ job }) => {
   return (
@@ -20,9 +21,9 @@ const JobCard = ({ job }) => {
           <p className="text-gray-300 mt-2 text-sm leading-relaxed">{job.description}</p>
         </div>
         <div className="flex flex-wrap items-center gap-3 mt-4">
-          <button className="px-5 py-2 bg-[#00eaff] text-black font-semibold text-sm rounded-lg flex items-center space-x-2 hover:bg-[#00aacc] transition">
+          <Link to='/chat' className="px-5 py-2 bg-[#00eaff] text-black font-semibold text-sm rounded-lg flex items-center space-x-2 hover:bg-[#00aacc] transition">
             <FontAwesomeIcon icon={faMessage} /> <span>Message</span>
-          </button>
+          </Link>
           <button className="px-5 py-2 bg-blue-600 text-white font-semibold text-sm rounded-lg flex items-center space-x-2 hover:bg-blue-700 transition">
             <FontAwesomeIcon icon={faPaperPlane} /> <span>Apply</span>
           </button>

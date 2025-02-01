@@ -1,5 +1,5 @@
 import { faUser } from '@fortawesome/free-regular-svg-icons'
-import { faBriefcase, faHome, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
+import { faBriefcase, faHome, faNoteSticky, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import img1 from "../../images/pexels-rfera-432059.jpg";
@@ -20,11 +20,16 @@ function Sidebar() {
               <FontAwesomeIcon icon={faBriefcase} /> <span>Jobs</span>
             </a>
             <a href="#" className="flex items-center space-x-3 hover:text-[#00eaff] transition">
+            <FontAwesomeIcon icon={faNoteSticky} className="cursor-pointer " />
+            <span>NotePad</span>
+            </a>
+            <a href="#" className="flex items-center space-x-3 hover:text-[#00eaff] transition">
               <FontAwesomeIcon icon={faUser} /> <span>Profile</span>
             </a>
             <a href="#" className="flex items-center space-x-3 text-red-500 hover:text-red-400 transition">
               <FontAwesomeIcon icon={faSignOutAlt} /> <span>Logout</span>
             </a>
+            
           </nav>
         </div></div>
   )

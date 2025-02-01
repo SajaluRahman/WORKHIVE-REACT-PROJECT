@@ -101,7 +101,7 @@ function Home() {
       note:"Enhances collaboration and builds trust by ensuring prompt responses and updates",},
   ];
   return (
-    <div className='overflow-x-hidden'>
+    <div className='overflow-x-hidden no-scrollbar '>
       <Navbarone />
       <div id='home'  className="relative  text-white py-44"  >
         
@@ -137,7 +137,7 @@ function Home() {
             </p>
            
              <section> 
-               <Link to="/Getting" className='button relative cursor-pointer flex items-center justify-center bg-[#213555] w-fit rounded-xl py-[19px] px-16 overflow-clip'
+               <Link to="/getting" className='button relative cursor-pointer flex items-center justify-center bg-[#213555] w-fit rounded-xl py-[19px] px-16 overflow-clip'
                 onMouseEnter={(e)=>setIsHover(true)}
                 onMouseLeave={(e)=>setIsHover(false)}>
                    <motion.div className='circle absolute left-[22px] w-[6px] h-[6px] bg-[#ffff] rounded-3xl ' 
@@ -242,7 +242,7 @@ function Home() {
          <h1 className='text-6xl text-white font-semibold text-center'>READY TO GET STARTED?</h1> 
          <div className='w-full flex justify-center mt-36 '>
          <section> 
-    <Link to="/Getting" className='button relative cursor-pointer flex items-center justify-center bg-[#213555] w-fit rounded-xl py-[16px] px-20 overflow-clip'
+    <Link to="/getting" className='button relative cursor-pointer flex items-center justify-center bg-[#213555] w-fit rounded-xl py-[16px] px-20 overflow-clip'
      onMouseEnter={(e)=>setIsHover1(true)}
      onMouseLeave={(e)=>setIsHover1(false)}>
         <motion.div className='circle absolute left-[22px] w-[6px] h-[6px] bg-[#ffff] rounded-3xl ' 

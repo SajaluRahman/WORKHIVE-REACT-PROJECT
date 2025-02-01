@@ -14,10 +14,10 @@ function CommonRoutes() {
       
     <Routes>
     <Route path="/" element={<Home />} />
-    <Route path="/SignUp" element={<SignUp />} />
-    <Route path="/Getting" element={<Getting />} />
-    <Route path="/Login" element={<Login />} />
-    <Route path="/Chat" element={<Chat />} />
+    <Route path="/signUp" element={<SignUp />} />
+    <Route path="/getting" element={<Getting />} />
+    <Route path="/login" element={<Login />} />
+    <Route path="/chat" element={<Chat />} />
   
      
     </Routes>

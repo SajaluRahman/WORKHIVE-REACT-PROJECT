@@ -1,6 +1,6 @@
 import React from "react"
 import CommonRoutes from "./Routes/CommonRoutes"
-import UserRoutes from "./Routes/UserRoutes/UserRoutes"
+import UserRoutes from "./Routes/UserRoutes/FreelancerRoutes"
 
 
 

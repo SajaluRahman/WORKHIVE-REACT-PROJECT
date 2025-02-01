@@ -229,7 +229,7 @@ export const Navbar3 = () => {
       <div className="hidden md:flex space-x-6 text-xl">
         {/* Chat Icon */}
         <div className="relative group">
-          <Link to='/Chat'>
+          <Link to='/chat'>
           <FontAwesomeIcon icon={faComment} className="cursor-pointer hover:text-gray-300" /></Link>
           <span className="absolute -top-5 left-1/2 -translate-x-1/2 bg-[#333333] text-white text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             Chat
@@ -246,7 +246,7 @@ export const Navbar3 = () => {
 
         {/* Profile Icon */}
         <div className="relative group">
-          <FontAwesomeIcon icon={faUser} className="cursor-pointer hover:text-gray-300" />
+          <Link to="/freelancerProfile"><FontAwesomeIcon icon={faUser} className="cursor-pointer hover:text-gray-300" /></Link>
           <span className="absolute -top-5 left-1/2 -translate-x-1/2 bg-[#333] text-white text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             Profile
           </span>
@@ -279,7 +279,7 @@ export const Navbar3 = () => {
         {/* Mobile Icons with Labels */}
         <div className="flex flex-col items-center space-y-4">
           <div className="flex items-center space-x-2">
-           <Link to="/Chat"> <FontAwesomeIcon icon={faComment} className="cursor-pointer hover:text-gray-300   text-2xl" /> 
+           <Link to="/chat"> <FontAwesomeIcon icon={faComment} className="cursor-pointer hover:text-gray-300   text-2xl" /> 
             <span>Chat</span></Link>
           </div>
           <div className="flex items-center space-x-2">
