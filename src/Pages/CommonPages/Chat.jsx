@@ -12,7 +12,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import img1 from "../../images/pexels-rfera-432059.jpg";
 import "../../App.css";
-import Sidebar from "../../Components/FreelancerComponents/Sidebar";
+import {Sidebar} from "../../Components/FreelancerComponents/Sidebar";
 import { faPaypal } from "@fortawesome/free-brands-svg-icons";
 import { Link } from "react-router-dom";
 
@@ -112,7 +112,7 @@ const [sidebarOpen, setSidebarOpen] = useState(false);
             onChange={(e) => setInputText(e.target.value)}
             onKeyPress={(e) => e.key === "Enter" && sendMessage()}
           />
-         <Link to="/progressionTracker"><FontAwesomeIcon icon={faChartSimple} className="text-gray-500 text-xl cursor-pointer hover:text-white transition" /> </Link>
+         <Link to="/progressiontracker"><FontAwesomeIcon icon={faChartSimple} className="text-gray-500 text-xl cursor-pointer hover:text-white transition" /> </Link>
           <FontAwesomeIcon icon={faCircleDollarToSlot} className="text-gray-500 text-xl cursor-pointer hover:text-white transition" />
           <FontAwesomeIcon icon={faMicrophone} className="text-gray-500 text-xl cursor-pointer hover:text-white transition" />
           <FontAwesomeIcon icon={faPaperPlane} className="text-[#00eaff] text-xl cursor-pointer hover:text-[#00b3cc] transition" onClick={sendMessage} />

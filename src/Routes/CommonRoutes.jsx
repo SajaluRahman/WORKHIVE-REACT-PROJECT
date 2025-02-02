@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Home from '../Pages/CommonPages/Home';
 
 import Getting from '../Pages/CommonPages/Getting';
@@ -14,7 +14,7 @@ function CommonRoutes() {
       
     <Routes>
     <Route path="/" element={<Home />} />
-    <Route path="/signUp" element={<SignUp />} />
+    <Route path="/signup" element={<SignUp />} />
     <Route path="/getting" element={<Getting />} />
     <Route path="/login" element={<Login />} />
     <Route path="/chat" element={<Chat />} />

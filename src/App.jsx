@@ -1,6 +1,7 @@
 import React from "react"
 import CommonRoutes from "./Routes/CommonRoutes"
-import UserRoutes from "./Routes/UserRoutes/FreelancerRoutes"
+import FreelancerRoutes from "./Routes/FreelancersRoutes/FreelancerRoutes"
+import ClientsRoutes from "./Routes/ClientsRoutes/ClientsRoutes"
 
 
 
@@ -12,7 +13,8 @@ function App() {
   return (
     <div>
      <CommonRoutes/>
-     <UserRoutes/>
+     <FreelancerRoutes/>
+     <ClientsRoutes/>
     </div>
   )
 }
