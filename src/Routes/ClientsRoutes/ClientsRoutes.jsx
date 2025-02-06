@@ -1,10 +1,10 @@
 import React from 'react'
-import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import ClientHome from '../../Pages/Clientspages/ClientHome';
 import ClientProfile from '../../Pages/Clientspages/ClientProfile';
 function ClientsRoutes() {
   return (
-    <div> <Router>
+    <div>
          
           
         <Routes>
@@ -15,7 +15,7 @@ function ClientsRoutes() {
          
         </Routes>
       
-    </Router>
+   
     </div>
   )
 }

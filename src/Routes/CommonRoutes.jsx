@@ -1,15 +1,16 @@
 import React from 'react'
-import { HashRouter as Router, Routes, Route } from "react-router-dom";
+
 import Home from '../Pages/CommonPages/Home';
 
 import Getting from '../Pages/CommonPages/Getting';
 import Login from '../Pages/CommonPages/Login';
 import SignUp from '../Pages/CommonPages/SignUp';
 import Chat from '../Pages/CommonPages/Chat';
+import { Routes, Route } from 'react-router-dom';
 
 function CommonRoutes() {
   return (
-    <div> <Router>
+    <div> <>
      
       
     <Routes>
@@ -22,7 +23,7 @@ function CommonRoutes() {
      
     </Routes>
   
-</Router></div>
+</></div>
   )
 }
 

@@ -3,8 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPaperPlane,
   faMicrophone,
-  faSmile,
-  faEllipsisV,
+
   faArrowLeft,
   faBars,
   faCircleDollarToSlot,
@@ -13,7 +12,7 @@ import {
 import img1 from "../../images/pexels-rfera-432059.jpg";
 import "../../App.css";
 import {Sidebar} from "../../Components/FreelancerComponents/Sidebar";
-import { faPaypal } from "@fortawesome/free-brands-svg-icons";
+
 import { Link } from "react-router-dom";
 
 function Chat  ()  {

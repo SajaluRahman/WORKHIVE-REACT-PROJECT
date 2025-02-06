@@ -147,7 +147,7 @@ function Home() {
                      
                    }}
                    transition={{ease:"easeIn",
-                     duration:0.2,
+                     duration:0.3,
                    }}> </motion.div>
                    <motion.div className='title font-medium tracking-tighter text-[19px] z-10 ' 
                    animate={{x:isHover?-8:8,
@@ -252,7 +252,7 @@ function Home() {
           
         }}
         transition={{ease:"easeIn",
-          duration:0.2,
+          duration:0.3,
         }}> </motion.div>
         <motion.div className='title  tracking-tighter font-semibold text-[22px] z-10 ' 
         animate={{x:isHover1?-8:8,

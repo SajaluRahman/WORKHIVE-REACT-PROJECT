@@ -1,5 +1,5 @@
 import React,{lazy, Suspense} from 'react'
-import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 const UserHome = lazy(()=> import( '../../Pages/Freelancerpages.jsx/FreelancerHome'));
 import FreelancerProfile from '../../Pages/Freelancerpages.jsx/FreelancerProfile';
@@ -11,7 +11,7 @@ import FreelancerHome from '../../Pages/Freelancerpages.jsx/FreelancerHome';
 function FreelancerRoutes() {
   return (
     <div>
-         <Router>
+         
      
       
      <Routes>
@@ -28,7 +28,7 @@ function FreelancerRoutes() {
       
      </Routes>
    
- </Router>
+ 
     </div>
   )
 }

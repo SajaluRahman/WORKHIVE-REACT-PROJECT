@@ -17,7 +17,7 @@ const Login = () => {
   const onSubmit = (data) => {
     console.log("Login Data:", data);
     // Add your authentication logic here
-    navigate("/userhome");
+ 
   };
 
   return (
@@ -85,20 +85,21 @@ const Login = () => {
               >
                 <FontAwesomeIcon className="mr-2 text-2xl" icon={faGoogle} /> Sign up with Google
               </button>
-              <button
-                type="button"
+              <Link to='/clienthome'
+                type="Link"
                 className="w-full flex items-center justify-center border py-2 rounded-md text-white bg-blue-600 hover:bg-blue-700 transition"
               >
                 <FontAwesomeIcon className="mr-2 text-2xl" icon={faFacebook} /> Sign up with Facebook
-              </button>
+              </Link>
             </div>
 
-            <button
+            <Link
+            to='/userhome'
               type="submit"
               className="bg-[#0A2647] text-white text-center px-6 py-3 mt-6 rounded-lg w-full text-lg font-semibold hover:bg-[#081b31] transition"
             >
               Submit
-            </button>
+            </Link>
           </form>
         </div>
 
