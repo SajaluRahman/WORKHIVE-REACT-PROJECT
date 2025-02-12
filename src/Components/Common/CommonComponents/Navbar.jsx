@@ -287,8 +287,8 @@ export const Navbar3 = () => {
             <span>Notepad</span>
           </div>
           <div className="flex items-center space-x-2">
-            <FontAwesomeIcon icon={faUser} className="cursor-pointer hover:text-gray-300  text-2xl" />
-            <span>Profile</span>
+           <Link to='/freelancerprofile' > <FontAwesomeIcon icon={faUser} className="cursor-pointer hover:text-gray-300  text-2xl" />
+            <span>Profile</span></Link>
           </div>
         </div>
       </div>

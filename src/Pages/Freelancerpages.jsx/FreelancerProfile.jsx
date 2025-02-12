@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faPlus, faXmark } from '@fortawesome/free-solid-svg-icons';
 import img1 from "../../images/pexels-rfera-432059.jpg";
 import { Navbar3 } from '../../Components/Common/CommonComponents/Navbar';
 import { useForm } from 'react-hook-form';
@@ -53,12 +53,12 @@ function FreelancerProfile() {
   return (
     <div>
       <Navbar3 />
-  <button
-        onClick={() => setSidebarOpen(!sidebarOpen)}
-        className="md:hidden fixed top-8 left-4 z-50 text-white p-2 rounded-full shadow-md"
-      >
-        <FontAwesomeIcon icon={faBars} size="lg" />
-      </button>
+   <button
+         onClick={() => setSidebarOpen(!sidebarOpen) }
+         className="md:hidden text-xl fixed top-8 left-0 z-50 text-white p-2 px-4 bg-[#3ca7c2] rounded-ee-xl rounded-tr-xl   shadow-md"
+       >
+       {sidebarOpen ? <FontAwesomeIcon icon={faXmark} /> : <FontAwesomeIcon icon={faBars} />}
+       </button>
       
       {/* Sidebar (Hidden on small screens, toggled on click) */}
       <div className={`fixed inset-y-0 left-0 z-40 transform ${sidebarOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0 transition-transform duration-300 ease-in-out w-64 bg-[#0a0f1f] md:block`}>  
