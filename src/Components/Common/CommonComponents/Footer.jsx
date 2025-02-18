@@ -2,7 +2,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <footer className="bg-[#213555] text-white py-10 relative overflow-hidden">
+    <footer className="bg-[#213555] text-white py-10 relative overflow-hidden ">
       <div className="max-w-6xl mx-auto px-4">
         {/* Footer Top Section */}
         <div className="flex flex-col md:flex-row justify-between items-start gap-8">
@@ -69,8 +69,8 @@ function Footer() {
       </div>
 
       {/* Bubbles Animation */}
-      <div className="absolute inset-0 pointer-events-none">
-        {Array.from({ length: 30 }).map((_, index) => (
+      <div className="absolute inset-0 pointer-events-none ">
+        {Array.from({ length: 40 }).map((_, index) => (
           <div
             key={index}
             className="absolute bg-blue-400 rounded-full opacity-70 animate-bubble"

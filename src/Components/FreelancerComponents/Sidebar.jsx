@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 export const  Sidebar =() =>{
   return (
-    <div> <div className="w-64 bg-[#12172d]    h-screen p-6 text-white fixed left-0 top-0 pt-16 flex flex-col space-y-6 shadow-lg">
+    <div> <div className="w-64 bg-[#12172d]    h-screen p-6 text-white fixed left-0 top-0 pt-24 flex flex-col space-y-6 shadow-lg">
           <div className="flex items-center space-x-3">
             <img src={img1} alt="User" className="w-12 h-12 rounded-full border border-[#00eaff]/50 shadow-md" />
             <span className="font-semibold text-lg">Freelancer</span>

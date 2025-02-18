@@ -9,15 +9,23 @@ import grid4 from '../../images/credit-card-security-concept.jpg';
 import grid5 from '../../images/top-view-women-working-together-office.jpg';
 import grid6 from '../../images/pexels-picjumbo-com-55570-210644.jpg';
 
+import image from '../../images/pexels-fauxels-3183131.jpg';
+import image2 from '../../images/pexels-monoar-rahman-22660-114907.jpg';
+import image3 from '../../images/pexels-divinetechygirl-1181244.jpg';
+import image4 from '../../images/pexels-shkrabaanthony-4348401.jpg';
+import image5 from '../../images/pexels-mareklevak-2265482.jpg';
+import image6 from '../../images/pexels-asphotograpy-887751.jpg';
+import image7 from '../../images/pexels-tima-miroshnichenko-5380670.jpg';
+import image8 from '../../images/pexels-thisisengineering-3861967.jpg';
 
 import Footer from '../../Components/Common/CommonComponents/Footer';
 import { useInView } from 'react-intersection-observer';
 
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Navbarone } from '../../Components/Common/CommonComponents/Navbar';
 
 function Home() {
@@ -100,6 +108,63 @@ function Home() {
       textclr:"text-[#D6D3D3]",
       note:"Enhances collaboration and builds trust by ensuring prompt responses and updates",},
   ];
+
+  const carouselItems = [
+   
+    {
+      title: "Data Analyst",
+      subtitle: "Turn data into insights",
+      image: image,
+    },
+    {
+      title: "Web Developer",
+      subtitle: "Build the digital world",
+      image: image2,
+    },
+    {
+      title: "MERN Stack Developer",
+      subtitle: "Full-stack web solutions",
+      image: image3,
+    },
+    {
+      title: "Graphic Designer",
+      subtitle: "Design with creativity",
+      image: image4,
+    },
+    {
+      title: "UI/UX Designer",
+      subtitle: "Enhance user experiences",
+      image: image5,
+    },
+    {
+      title: "Mobile App Developer",
+      subtitle: "Apps that make life easier",
+      image: image6,
+    },
+    {
+      title: "Cybersecurity Specialist",
+      subtitle: "Protect digital assets",
+      image: image7,
+    },
+    {
+      title: "Software Engineer",
+      subtitle: "Innovate with technology",
+      image: image8,
+    }
+
+
+  ];
+  const [scrollIndex, setScrollIndex] = useState(0);
+
+  const scrollLeft = () => {
+    setScrollIndex((prev) => Math.max(prev - 1, 0));
+  };
+
+  const scrollRight = () => {
+    setScrollIndex((prev) => Math.min(prev + 1, carouselItems.length - 1));
+  };
+  const navigate=useNavigate();
+  const goto=()=>{navigate('/getting')}
   return (
     <div className='overflow-x-hidden no-scrollbar '>
       <Navbarone />
@@ -196,6 +261,39 @@ function Home() {
       </div>
     </div>
       </section>
+
+      <section>
+  <div  className="relative w-[98%] overflow-auto no-scrollbar p-10">
+    {/* Carousel Wrapper */}
+    <motion.div
+      className="flex  active:cursor-grabbing"
+      drag="x"
+      dragConstraints={{ left: -((carouselItems.length - 1) * 300), right: 0 }}
+      
+      style={{ gap: "20px" }}
+    >
+      {carouselItems.map((item, index) => (
+        <motion.div
+        onClick={goto}
+          key={index}
+          className="w-[300px] cursor-pointer flex-shrink-0 relative"
+          whileHover={{ scale: 1.05 }}
+        >
+          <img
+            src={item.image}
+            alt={item.title}
+            className="w-full h-[400px] object-cover rounded-lg"
+          />
+          <div className="absolute inset-0 bg-black bg-opacity-30 flex flex-col justify-end p-5 text-white">
+            <p className="text-sm">{item.subtitle}</p>
+            <h2 className="text-lg font-semibold">{item.title}</h2>
+          </div>
+        </motion.div>
+      ))}
+    </motion.div>
+  </div>
+</section>
+
       <section id='services'>
         <div className="md:p-10 mt-20">
           <div className="grid md:grid-cols-3 grid-cols-1 gap-8">
@@ -230,6 +328,9 @@ function Home() {
         </div>
 
       </section>
+
+      
+
       <section>
         <div ref={ref2} className={`mt-10 transform duration-1000 ease-out transition-all delay-300 overflow-hidden ${
         inView2

@@ -9,6 +9,7 @@ import {
   faCircleDollarToSlot,
   faChartSimple,
   faXmark,
+  faRightToBracket,
 } from "@fortawesome/free-solid-svg-icons";
 import img1 from "../../images/pexels-rfera-432059.jpg";
 import "../../App.css";
@@ -44,16 +45,17 @@ const [sidebarOpen, setSidebarOpen] = useState(false);
   return (
     <div className="flex w-full h-screen bg-[#12182b] font-sans overflow-hidden">
       {/* Sidebar Toggle Button (for mobile) */}
-       <button
-             onClick={() => setSidebarOpen(!sidebarOpen) }
-             className="md:hidden text-xl fixed top-8 left-0 z-50 text-white p-2 px-4 bg-[#3ca7c2] rounded-ee-xl rounded-tr-xl   shadow-md"
-           >
-           {sidebarOpen ? <FontAwesomeIcon icon={faXmark} /> : <FontAwesomeIcon icon={faBars} />}
-           </button>
-      {/* Sidebar (Hidden on small screens, toggled on click) */}
-      <div className={`fixed lg:relative inset-y-0 left-0 z-40 transform ${sidebarOpen ? "translate-x-0" : "-translate-x-full"} lg:translate-x-0 transition-transform duration-300 ease-in-out w-64 bg-[#0a0f1f] lg:block`}>  
-        <Sidebar />
-      </div>
+   <button
+          onClick={() => setSidebarOpen(!sidebarOpen)}
+          className="text-xl fixed top-6 left-0 z-50 text-white p-2 px-3 bg-[#141b36] rounded-r-lg shadow-md "
+        >
+          {sidebarOpen ? <FontAwesomeIcon icon={faRightToBracket } />: <FontAwesomeIcon icon={faBars} />}
+        </button>
+  
+        {/* Sidebar */}
+        <div className={`fixed inset-y-0 left-0 z-40 transform ${sidebarOpen ? "translate-x-0" : "-translate-x-full"} transition-transform duration-300 ease-in-out w-64 bg-blue-900 text-white  `}>
+          <Sidebar />
+        </div>
 
       {/* Contact List Sidebar */}
       <div className={`h-screen bg-gradient-to-b from-[#1f293d] to-[#12182b] p-4 text-white flex flex-col shadow-xl backdrop-blur-md border-r border-[#00eaff]/50 

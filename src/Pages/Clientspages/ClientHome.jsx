@@ -4,7 +4,7 @@ import img1 from "../../images/pexels-rfera-432059.jpg";
 import { Sidebar2 } from "../../Components/FreelancerComponents/Sidebar";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faRightToBracket, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 
 function ClientHome() {
@@ -43,15 +43,17 @@ function ClientHome() {
   return (
     <>
       <Navbar4 />
-      <div className={`fixed lg: inset-y-0 left-0 z-40 transform ${sidebarOpen ? "translate-x-0" : "-translate-x-full"} lg:translate-x-0 transition-transform duration-300 ease-in-out w-64 bg-[#0a0f1f] lg:block`}>  
-  <button
-        onClick={() => setSidebarOpen(!sidebarOpen) }
-        className="md:hidden text-xl fixed top-8 left-0 z-50 text-white p-2 px-4 bg-[#3ca7c2] rounded-ee-xl rounded-tr-xl   shadow-md"
-      >
-      {sidebarOpen ? <FontAwesomeIcon icon={faXmark} /> : <FontAwesomeIcon icon={faBars} />}
-      </button>
-      <Sidebar2/>
-      </div>
+      <button
+             onClick={() => setSidebarOpen(!sidebarOpen)}
+             className="text-xl fixed top-12 left-0 z-50 text-white p-2 px-3 bg-[#141b36] rounded-r-lg shadow-md "
+           >
+             {sidebarOpen ? <FontAwesomeIcon icon={faRightToBracket } />: <FontAwesomeIcon icon={faBars} />}
+           </button>
+     
+           {/* Sidebar */}
+           <div className={`fixed inset-y-0 left-0 z-40 transform ${sidebarOpen ? "translate-x-0" : "-translate-x-full"} transition-transform duration-300 ease-in-out w-64 bg-blue-900 text-white  `}>
+             <Sidebar2 />
+           </div>
       <div className="bg-gradient-to-b from-gray-900 to-black min-h-screen flex flex-col items-center py-16 px-6">
         <h1 className="text-4xl font-bold text-white mb-10 text-center">Meet Our Talented Freelancers</h1>
 

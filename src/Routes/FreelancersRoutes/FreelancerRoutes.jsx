@@ -6,6 +6,7 @@ import FreelancerProfile from '../../Pages/Freelancerpages.jsx/FreelancerProfile
 import ProgressionTracker from '../../Pages/Freelancerpages.jsx/ProgressionTracker';
 import NotePad from '../../Pages/Freelancerpages.jsx/NotePad';
 import FreelancerHome from '../../Pages/Freelancerpages.jsx/FreelancerHome';
+import Info from '../../Pages/Freelancerpages.jsx/Info';
 
 
 function FreelancerRoutes() {
@@ -22,6 +23,7 @@ function FreelancerRoutes() {
      <Route path="/freelancerprofile" element={<FreelancerProfile />} />
      <Route path="/progressiontracker" element={<ProgressionTracker />} />
      <Route path="/notepad" element={<NotePad />} />
+     <Route path="/info" element={<Info />} />
      
   
    
