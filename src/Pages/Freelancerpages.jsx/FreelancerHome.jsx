@@ -7,6 +7,7 @@ import "../../App.css";
 import img from "../../images/Screenshot 2025-01-16 160134.png";
 import img1 from "../../images/pexels-rfera-432059.jpg";
 import img2 from "../../images/1c77f8e4-3fb3-4131-be95-424e2e3510db.jpg";
+import imgs1 from "../../images/pexels-thisisengineering-3861967.jpg";
 import img3 from "../../images/2feb1.jpg";
 import img4 from "../../images/6db67416-39dc-4c96-a7f1-084656950e0f.jpg";
 import img5 from "../../images/cfee8312-3139-4130-893e-e957dd53f329.jpg";
@@ -18,7 +19,28 @@ import { useNavigate } from "react-router-dom";
 
 // Job data with categories
 const jobsData = [
-  { id: 1, image: img, userImage: img1, user: "Anna Bell", title: "AI Artist", description: "We are hiring AI artists!", rating: 5, price: 59.99, category: "AI" },
+  { 
+    id: 1, 
+    image: img, 
+    userImage: img1, 
+    user: "Anna Bell", 
+    title: "AI Artist", 
+    description: "We are hiring AI artists!", 
+    description1: "We are seeking a creative and innovative AI Artist to join our team. The ideal candidate will have a strong understanding of artificial intelligence and machine learning techniques, specifically in the realm of generative art. You should be skilled at using AI tools, such as GANs or other neural network-based software, to create visually compelling and unique artworks. A passion for pushing the boundaries of art and technology is essential, as well as the ability to experiment and iterate on creative ideas. The role will involve working with AI to generate original pieces, exploring new styles, and producing high-quality digital art that engages and inspires viewers.",
+    rating: 5, 
+    price: 59.99, 
+    category: "AI",
+    pay: "$59.99", 
+    hourlyRate: "$30/hr", 
+    duration: "3 months",
+    requirements: ["Proficient in AI tools", "Experience in generative art", "Creativity"],
+    images: [img, imgs1],
+    paymentStructure: "Hourly Pay",
+    bonus: "Performance-based bonuses up to $500",
+    paymentMethod: "Bank Transfer",
+    paymentFrequency: "Bi-weekly",
+  },
+  
   { id: 2, image: img2, userImage: img1, user: "Lannie Coleman", title: "Graphic Designer", description: "We need creative graphic designers!", rating: 5, price: 79.99, category: "Design" },
   { id: 3, image: img3, userImage: img1, user: "Carol Steve", title: "MERN Stack Developer", description: "Hiring MERN developers!", rating: 5, price: 112.99, category: "Development" },
   { id: 4, image: img4, userImage: img1, user: "Don Weber", title: "UI/UX Designer", description: "Looking for UI/UX designers!", rating: 4, price: 99.99, category: "Design" },
@@ -39,7 +61,11 @@ function FreelancerHome() {
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   const navigate = useNavigate();
-  const infoPage = (id) => navigate(`/info/${id}`);
+
+
+  // Inside FreelancerHome component
+  
+  const infoPage = (job) => navigate(`/info`, { state: { job } });
 
   // Filter jobs based on selected category
   const filteredJobs = useMemo(() => {
@@ -97,9 +123,9 @@ function FreelancerHome() {
       </div>
 
       {/* Job Listings */}
-      <div className="flex-1 p-4 md:px-52 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 bg-blue-100 h-[40vh] overflow-auto">
+      <div className="flex-1 p-4 md:px-52 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6  max-h-[80vh] no-scrollbar overflow-scroll">
         {sortedJobs.map((job) => (
-          <div onClick={() => infoPage(job.id)} key={job.id} className="bg-white cursor-pointer hover:scale-105 transition-all hover:shadow-xl ease-in-out shadow-md rounded-lg overflow-hidden p-3">
+          <div onClick={() => infoPage(job)} key={job.id} className="bg-white cursor-pointer hover:scale-105 transition-all hover:shadow-xl ease-in-out shadow-md rounded-lg overflow-hidden p-3">
             <img src={job.image} alt={`Job: ${job.title}`} className="w-full h-40 sm:h-48 object-cover rounded-md" />
             <div className="p-3">
               <div className="flex items-center space-x-2">
