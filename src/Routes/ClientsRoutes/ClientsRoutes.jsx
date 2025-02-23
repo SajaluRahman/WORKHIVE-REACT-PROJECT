@@ -1,14 +1,15 @@
 import React from 'react'
 import { Routes, Route } from "react-router-dom";
-import ClientHome from '../../Pages/Clientspages/ClientHome';
+
 import ClientProfile from '../../Pages/Clientspages/ClientProfile';
+import Freelancers from '../../Pages/Clientspages/Freelancers';
 function ClientsRoutes() {
   return (
     <div>
          
           
         <Routes>
-        <Route path="/clienthome" element={<ClientHome />} />
+        <Route path="/userinfo" element={<Freelancers />} />
         <Route path="/clientprofile" element={<ClientProfile />} />
        
       

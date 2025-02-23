@@ -112,45 +112,46 @@ function Home() {
   const carouselItems = [
    
     {
-      title: "Data Analyst",
-      subtitle: "Turn data into insights",
+      title: "Data Analyst Looking for Freelance Projects",
+      subtitle: "Expert in data analysis and insights",
       image: image,
     },
     {
-      title: "Web Developer",
-      subtitle: "Build the digital world",
+      title: "Web Developer Available for Freelance Work",
+      subtitle: "Building modern and responsive websites",
       image: image2,
     },
     {
-      title: "MERN Stack Developer",
-      subtitle: "Full-stack web solutions",
+      title: "MERN Stack Developer Seeking Freelance Opportunities",
+      subtitle: "Full-stack web development specialist",
       image: image3,
     },
     {
-      title: "Graphic Designer",
-      subtitle: "Design with creativity",
+      title: "Graphic Designer Open for Freelance Projects",
+      subtitle: "Creating visually appealing designs",
       image: image4,
     },
     {
-      title: "UI/UX Designer",
-      subtitle: "Enhance user experiences",
+      title: "UI/UX Designer Looking for Freelance Work",
+      subtitle: "Enhancing user experience with great design",
       image: image5,
     },
     {
-      title: "Mobile App Developer",
-      subtitle: "Apps that make life easier",
+      title: "Mobile App Developer Available for Freelance Jobs",
+      subtitle: "Developing high-quality mobile applications",
       image: image6,
     },
     {
-      title: "Cybersecurity Specialist",
-      subtitle: "Protect digital assets",
+      title: "Cybersecurity Specialist Seeking Freelance Projects",
+      subtitle: "Protecting digital assets with security expertise",
       image: image7,
     },
     {
-      title: "Software Engineer",
-      subtitle: "Innovate with technology",
+      title: "Software Engineer Open for Freelance Work",
+      subtitle: "Innovating with technology and software solutions",
       image: image8,
     }
+    
 
 
   ];
@@ -164,7 +165,7 @@ function Home() {
     setScrollIndex((prev) => Math.min(prev + 1, carouselItems.length - 1));
   };
   const navigate=useNavigate();
-  const goto=()=>{navigate('/getting')}
+  const goto=()=>{navigate('/userhome')}
   return (
     <div className='overflow-x-hidden no-scrollbar '>
       <Navbarone />

@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faRightToBracket, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 
-function ClientHome() {
+function Freelancers() {
       const [sidebarOpen, setSidebarOpen] = useState(false);
     
   const profiles = [
@@ -96,4 +96,4 @@ function ClientHome() {
   );
 }
 
-export default ClientHome;
+export default Freelancers;

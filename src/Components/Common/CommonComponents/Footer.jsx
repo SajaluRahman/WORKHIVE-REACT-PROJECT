@@ -2,7 +2,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <footer className="bg-[#213555] text-white py-10 relative overflow-hidden ">
+    <footer className="bg-[#213555] text-white mt-10 py-10 relative overflow-hidden ">
       <div className="max-w-6xl mx-auto px-4">
         {/* Footer Top Section */}
         <div className="flex flex-col md:flex-row justify-between items-start gap-8">
