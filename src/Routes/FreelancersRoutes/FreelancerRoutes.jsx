@@ -16,7 +16,7 @@ function FreelancerRoutes() {
      
       
      <Routes>
-     <Route path="/userhome" element={
+     <Route path="/freelanceworks" element={
       <Suspense fallback={<div className=' h-screen text-4xl flex justify-center items-center'>Loading...</div>}>
       <FreelancerHome /></Suspense>
       } />

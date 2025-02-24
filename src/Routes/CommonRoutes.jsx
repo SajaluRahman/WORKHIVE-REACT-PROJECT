@@ -8,6 +8,7 @@ import Chat from '../Pages/CommonPages/Chat';
 import { Routes, Route } from 'react-router-dom';
 import ClientHome from '../Pages/CommonPages/ClientHome';
 import FreelancerHome from '../Pages/CommonPages/FreelancerHome';
+import LandingPage from '../Pages/CommonPages/LandingPage';
 
 
 function CommonRoutes() {
@@ -16,8 +17,9 @@ function CommonRoutes() {
      
       
     <Routes>
+    <Route path="/" element={<LandingPage />} />
 
-    <Route path="/" element={<FreelancerHome />} />
+    <Route path="/freelancehome" element={<FreelancerHome />} />
     <Route path="/clienthome" element={<ClientHome />} />
     <Route path="/signup" element={<SignUp />} />
     <Route path="/getting" element={<Getting />} />

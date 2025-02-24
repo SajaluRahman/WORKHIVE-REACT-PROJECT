@@ -198,31 +198,31 @@ function Home() {
               <br />
               Connecting Clients
             </h1>
-            <p className="text-md xl:text-2xl mb-4 xl:ml-52">
-              Join WorkHive to bridge your needs with <br />tailored freelance services.
+            <p className="text-md xl:text-2xl md:w-2/5 mb-4 xl:ml-40">
+            WorkHive is a dynamic platform connecting clients with skilled freelancers, ensuring seamless collaboration and secure transactions.
             </p>
            
              <section> 
-               <Link to="/getting" className='button relative cursor-pointer flex items-center justify-center bg-[#213555] w-fit rounded-xl py-[19px] px-16 overflow-clip'
+               <Link to="/freelanceworks" className='button relative cursor-pointer flex items-center justify-center bg-[#213555] w-fit rounded-xl py-[19px] px-16 overflow-clip'
                 onMouseEnter={(e)=>setIsHover(true)}
                 onMouseLeave={(e)=>setIsHover(false)}>
                    <motion.div className='circle absolute left-[22px] w-[6px] h-[6px] bg-[#ffff] rounded-3xl ' 
                    animate ={{
-                     scale:isHover ? 65: 1,
+                     scale:isHover ? 70: 1,
                      backgroundColor:isHover?"#ffff":"#ffff",
                      
                    }}
                    transition={{ease:"easeIn",
-                     duration:0.3,
+                     duration:0.2,
                    }}> </motion.div>
                    <motion.div className='title font-medium tracking-tighter text-[19px] z-10 ' 
                    animate={{x:isHover?-8:8,
                      color:isHover?"#213555":"#ffff",
-                   }}> <p>Get Started</p>
+                   }}> <p>Freelance Works</p>
                    
                    </motion.div>
                    <motion.div className='absolute  flex items-center  right-[22px]'
-                   animate={{x:isHover?0 :24,}}>
+                   animate={{x:isHover?0 :28,}}>
                   <FontAwesomeIcon className='w-[26px] h-[26px] text-[#213555] stroke-<2> ' icon={faArrowRight} />
                    </motion.div>
                </Link>
@@ -344,7 +344,7 @@ function Home() {
          <h1 className='text-6xl text-white font-semibold text-center'>READY TO GET STARTED?</h1> 
          <div className='w-full flex justify-center mt-36 '>
          <section> 
-    <Link to="/getting" className='button relative cursor-pointer flex items-center justify-center bg-[#213555] w-fit rounded-xl py-[16px] px-20 overflow-clip'
+    <Link to="/freelanceworks" className='button relative cursor-pointer flex items-center justify-center bg-[#213555] w-fit rounded-xl py-[16px] px-20 overflow-clip'
      onMouseEnter={(e)=>setIsHover1(true)}
      onMouseLeave={(e)=>setIsHover1(false)}>
         <motion.div className='circle absolute left-[22px] w-[6px] h-[6px] bg-[#ffff] rounded-3xl ' 
@@ -359,7 +359,7 @@ function Home() {
         <motion.div className='title  tracking-tighter font-semibold text-[22px] z-10 ' 
         animate={{x:isHover1?-8:8,
           color:isHover1?"#213555":"#ffff",
-        }}> <p>Join Now</p>
+        }}> <p>See Wokrs</p>
         
         </motion.div>
         <motion.div className='absolute  flex items-center  right-[22px]'

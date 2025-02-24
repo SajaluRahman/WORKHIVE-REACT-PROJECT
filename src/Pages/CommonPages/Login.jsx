@@ -94,7 +94,7 @@ const Login = () => {
             </div>
 
             <Link
-            to='/userhome'
+            to='/freelancehome'
               type="submit"
               className="bg-[#0A2647] text-white text-center px-6 py-3 mt-6 rounded-lg w-full text-lg font-semibold hover:bg-[#081b31] transition"
             >
