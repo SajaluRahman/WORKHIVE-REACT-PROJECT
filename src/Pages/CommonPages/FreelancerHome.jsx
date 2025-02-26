@@ -359,7 +359,7 @@ function Home() {
         <motion.div className='title  tracking-tighter font-semibold text-[22px] z-10 ' 
         animate={{x:isHover1?-8:8,
           color:isHover1?"#213555":"#ffff",
-        }}> <p>See Wokrs</p>
+        }}> <p>See Works</p>
         
         </motion.div>
         <motion.div className='absolute  flex items-center  right-[22px]'
