@@ -165,7 +165,7 @@ function Home() {
     setScrollIndex((prev) => Math.min(prev + 1, carouselItems.length - 1));
   };
   const navigate=useNavigate();
-  const goto=()=>{navigate('/userhome')}
+  const goto=()=>{navigate('/freelanceworks')}
   return (
     <div className='overflow-x-hidden no-scrollbar '>
       <Navbarone />

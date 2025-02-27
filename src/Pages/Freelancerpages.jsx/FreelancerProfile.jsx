@@ -10,6 +10,7 @@ function FreelancerProfile() {
   const [isAdding, setIsAdding] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const { register, handleSubmit, reset } = useForm();
+  const [isView,setView] =useState(false);
 
   const [profileData, setProfileData] = useState(() => {
     const storedProfile = localStorage.getItem("freelancerProfileData");
@@ -43,6 +44,8 @@ function FreelancerProfile() {
 
   const handleEditClick = () => setIsEditing(true);
   const handleEditClose = () => setIsEditing(false);
+  const handleView =()=> setView(true)
+  const handleViews =()=> setView(false)
   
   const handleEditSubmit = (data) => {
     setProfileData(data);
@@ -113,7 +116,7 @@ function FreelancerProfile() {
 
         <div className="max-w-4xl w-full mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {items[selectedTab]?.map((item, index) => (
-            <div key={index} className="bg-white text-black rounded-lg shadow-md p-4 flex flex-col items-center space-y-2 border border-gray-300">
+            <div key={index} onClick={handleView} className="bg-white cursor-pointer text-black rounded-lg shadow-md p-4 flex flex-col items-center space-y-2 border border-gray-300">
               <img src={item.image} alt="Uploaded" className="w-48 h-48 rounded-lg object-cover shadow-lg" />
               <p className="text-sm text-center font-semibold">{item.description}</p>
             </div>
@@ -125,8 +128,8 @@ function FreelancerProfile() {
         </button>
 
         {isAdding && (
-          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-            <div className="bg-white text-black p-6 rounded-lg shadow-xl">
+          <div   className="fixed inset-0 flex items-center  justify-center bg-black bg-opacity-50">
+            <div className="bg-white  text-black p-6 rounded-lg shadow-xl">
               <h2 className="text-lg font-bold mb-4">Add {selectedTab}</h2>
               <form onSubmit={handleSubmit(onSubmit)}>
                 <input type="file" {...register("image")} className="mb-2" required />
@@ -139,7 +142,20 @@ function FreelancerProfile() {
             </div>
           </div>
         )}
-
+              
+              { isView && (
+                <div className='h-screen w-screen backdrop-blur-sm absolute top-0  '>
+                    <button className='h-12 mt-20 ' onClick={handleViews}   >close </button>
+                    <div className="max-w-4xl w-full mt-6">
+          {items[selectedTab]?.map((item, index) => (
+            <div key={index}  className="bg-white cursor-pointer text-black rounded-lg shadow-md p-4 flex flex-col items-center space-y-2 border border-gray-300">
+              <img src={item.image} alt="Uploaded" className="w-48 h-48 rounded-lg object-cover shadow-lg" />
+              <p className="text-sm text-center font-semibold">{item.description}</p>
+            </div>
+          ))}
+        </div>
+                </div>
+              )}
 
         {isEditing && (
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
