@@ -11,6 +11,7 @@ function FreelancerProfile() {
   const [isEditing, setIsEditing] = useState(false);
   const { register, handleSubmit, reset } = useForm();
   const [isView,setView] =useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
 
   const [profileData, setProfileData] = useState(() => {
     const storedProfile = localStorage.getItem("freelancerProfileData");
@@ -44,8 +45,14 @@ function FreelancerProfile() {
 
   const handleEditClick = () => setIsEditing(true);
   const handleEditClose = () => setIsEditing(false);
-  const handleView =()=> setView(true)
-  const handleViews =()=> setView(false)
+  const handleView =(item)=> {
+    setSelectedItem(item);
+    setView(true)
+  }
+  const handleViews =()=>{ setView(false);
+ setSelectedItem(null);
+  }
+  
   
   const handleEditSubmit = (data) => {
     setProfileData(data);
@@ -61,18 +68,28 @@ function FreelancerProfile() {
   const onSubmit = (data) => {
     if (!data.image || data.image.length === 0) return;
     
-    const file = data.image[0];
+    const imagesArray={};
+    const file = data.image;
+
+    const readImages=(index)=>{
+      if(index>=files.lenght){
+        setItems ( prev => {
+          const updatedItems = {
+            ...prev,
+            [selectedTab]: [...(prev[selectedTab] || []), { image: imagesArray, smallDescription: data.description,detailedDescription:data.detailedDescription }]
+          };
+          localStorage.setItem("freelancerProfileItems", JSON.stringify(updatedItems));
+          return updatedItems;
+        });
+            handleClose();
+            return;
+      }
+    }
     const reader = new FileReader();
     reader.onloadend = () => {
-      setItems(prev => {
-        const updatedItems = {
-          ...prev,
-          [selectedTab]: [...(prev[selectedTab] || []), { image: reader.result, description: data.description }]
-        };
-        localStorage.setItem("freelancerProfileItems", JSON.stringify(updatedItems));
-        return updatedItems;
-      });
-      handleClose();
+      
+      imagesArray.push(reader.result);
+      readImages(index+1)
     };
     reader.readAsDataURL(file);
   };
@@ -115,13 +132,18 @@ function FreelancerProfile() {
         </div>
 
         <div className="max-w-4xl w-full mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {items[selectedTab]?.map((item, index) => (
-            <div key={index} onClick={handleView} className="bg-white cursor-pointer text-black rounded-lg shadow-md p-4 flex flex-col items-center space-y-2 border border-gray-300">
-              <img src={item.image} alt="Uploaded" className="w-48 h-48 rounded-lg object-cover shadow-lg" />
-              <p className="text-sm text-center font-semibold">{item.description}</p>
-            </div>
-          ))}
-        </div>
+  {items[selectedTab]?.map((item, index) => (
+    <div 
+      key={index} 
+      onClick={() => handleView(item)} 
+      className="bg-white cursor-pointer text-black rounded-lg shadow-md p-4 flex flex-col items-center space-y-2 border border-gray-300"
+    >
+      <img src={item.image} alt="Uploaded" className="w-48 h-48 rounded-lg object-cover shadow-lg" />
+      <p className="text-sm text-center font-semibold">{item.description}</p>
+    </div>
+  ))}
+</div>
+
 
         <button onClick={handleAddClick} className="mt-4 px-4 py-2 bg-green-500 hover:bg-green-600 rounded-lg text-xs text-white shadow-md">
           <FontAwesomeIcon icon={faPlus} /> Add {selectedTab}
@@ -143,19 +165,15 @@ function FreelancerProfile() {
           </div>
         )}
               
-              { isView && (
-                <div className='h-screen w-screen backdrop-blur-sm absolute top-0  '>
-                    <button className='h-12 mt-20 ' onClick={handleViews}   >close </button>
-                    <div className="max-w-4xl w-full mt-6">
-          {items[selectedTab]?.map((item, index) => (
-            <div key={index}  className="bg-white cursor-pointer text-black rounded-lg shadow-md p-4 flex flex-col items-center space-y-2 border border-gray-300">
-              <img src={item.image} alt="Uploaded" className="w-48 h-48 rounded-lg object-cover shadow-lg" />
-              <p className="text-sm text-center font-semibold">{item.description}</p>
-            </div>
-          ))}
-        </div>
-                </div>
-              )}
+              {isView && selectedItem && (
+  <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-50'>
+    <div className="bg-white p-6 rounded-lg shadow-xl text-black w-96 flex flex-col items-center">
+      <button className='self-end text-red-500' onClick={handleViews}>✖</button>
+      <img src={selectedItem.image} alt="Uploaded" className="w-48 h-48 rounded-lg object-cover shadow-lg" />
+      <p className="text-sm text-center font-semibold mt-2">{selectedItem.description}</p>
+    </div>
+  </div>
+)}
 
         {isEditing && (
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
