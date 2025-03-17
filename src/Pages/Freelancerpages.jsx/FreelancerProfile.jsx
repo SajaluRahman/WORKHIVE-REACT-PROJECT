@@ -36,12 +36,13 @@ function FreelancerProfile() {
   });
 
   useEffect(() => {
-    localStorage.setItem("freelancerProfileItems", JSON.stringify(items));
+    try {
+      localStorage.setItem("freelancerProfileItems", JSON.stringify(items));
+    } catch (error) {
+      console.error("Storage limit exceeded. Consider clearing storage or using a different storage method.", error);
+    }
   }, [items]);
-
-  useEffect(() => {
-    localStorage.setItem("freelancerProfileData", JSON.stringify(profileData));
-  }, [profileData]);
+  
 
   const handleEditClick = () => setIsEditing(true);
   const handleEditClose = () => setIsEditing(false);
@@ -64,53 +65,61 @@ function FreelancerProfile() {
     setIsAdding(false);
     reset();
   };
+  const handleDelete = (id) => {
+    setItems((prev) => {
+      const updatedItems = {
+        ...prev,
+        [selectedTab]: prev[selectedTab].filter(item => item !== selectedItem), // Remove the selected item
+      };
+      localStorage.setItem("freelancerProfileItems", JSON.stringify(updatedItems)); // Update localStorage
+      return updatedItems;
+    });
+  
+    setView(false); // Close the modal after deletion
+  };
+  
+  
 
   const onSubmit = (data) => {
     if (!data.image || data.image.length === 0) return;
-    
-    const imagesArray={};
-    const file = data.image;
-
-    const readImages=(index)=>{
-      if(index>=files.lenght){
-        setItems ( prev => {
-          const updatedItems = {
-            ...prev,
-            [selectedTab]: [...(prev[selectedTab] || []), { image: imagesArray, smallDescription: data.description,detailedDescription:data.detailedDescription }]
-          };
-          localStorage.setItem("freelancerProfileItems", JSON.stringify(updatedItems));
-          return updatedItems;
-        });
-            handleClose();
-            return;
-      }
-    }
+  
+    const file = data.image[0]; // Ensure single file is selected
+    if (!file) return;
+  
     const reader = new FileReader();
     reader.onloadend = () => {
-      
-      imagesArray.push(reader.result);
-      readImages(index+1)
+      setItems((prev) => {
+        const updatedItems = {
+          ...prev,
+          [selectedTab]: [...(prev[selectedTab] || []), { image: reader.result, description: data.description, bigdescription: data.bigdescription }],
+        };
+        localStorage.setItem("freelancerProfileItems", JSON.stringify(updatedItems));
+        return updatedItems;
+      });
+      handleClose();
     };
+  
     reader.readAsDataURL(file);
   };
+  
 
   return (
     <div>
       <Navbar3 />
-      <div className="min-h-screen bg-[#0A1F3D] text-white pt-20 p-4 flex flex-col items-center">
-      <div className="max-w-4xl w-full bg-[#23395B] mt-10 p-4 rounded-xl shadow-xl flex items-center border border-gray-600 relative">
-  <img src={img1} alt="Profile" className="w-24 h-24 rounded-full border-4 border-white shadow-md mr-6" />
+      <div className="min-h-screen bg-white text-black pt-20 p-4 flex flex-col items-center">
+      <div className="max-w-4xl w-full bg-gray-100 mt-10 p-4 rounded-xl shadow-xl flex items-center border border-gray-300 relative">
+  <img src={img1} alt="Profile" className="w-24 h-24 rounded-full border-4border-gray-300 shadow-md mr-6" />
   
   <div className="flex-1">
-    <h2 className="text-xl font-bold">{profileData.name}</h2>
-    <p className="text-sm text-gray-300">{profileData.role}</p>
-    <p className="text-xs text-gray-400 mt-2">{profileData.description}</p>
+    <h2 className="text-xl font-bold text-black">{profileData.name}</h2>
+    <p className="text-sm text-gray-700">{profileData.role}</p>
+    <p className="text-xs text-gray-600 mt-2">{profileData.description}</p>
     
     <div className="mt-2 space-y-1">
       <p className="text-xs cursor-pointer"  onClick={() => window.location.href = `mailto:${profileData.email}`}>📧  {profileData.email}</p>
       <p className="text-xs">📞 {profileData.phone}</p>
-      <p className="text-xs">🔗 <a href={profileData.linkedin} className="text-blue-400">LinkedIn</a></p>
-      <p className="text-xs">🐱 <a href={profileData.github} className="text-blue-400">GitHub</a></p>
+      <p className="text-xs">🔗 <a href={profileData.linkedin} className="text-blue-600">LinkedIn</a></p>
+      <p className="text-xs">🐱 <a href={profileData.github} className="text-blue-600">GitHub</a></p>
     </div>
   </div>
 
@@ -124,7 +133,7 @@ function FreelancerProfile() {
           {Object.keys(items).map(tab => (
             <button 
               key={tab} 
-              className={`px-4 py-2 rounded-lg text-xs ${selectedTab === tab ? 'bg-blue-600' : 'bg-gray-600'} hover:bg-blue-700`} 
+              className={`px-4 py-2 rounded-lg text-xs ${selectedTab === tab ? 'bg-blue-600 text-white' : 'bg-gray-300'} hover:bg-blue-700`} 
               onClick={() => setSelectedTab(tab)}>
               {tab}
             </button>
@@ -140,6 +149,7 @@ function FreelancerProfile() {
     >
       <img src={item.image} alt="Uploaded" className="w-48 h-48 rounded-lg object-cover shadow-lg" />
       <p className="text-sm text-center font-semibold">{item.description}</p>
+      {/* <p className="text-sm text-center font-semibold">{item.bigdescription}</p> */}
     </div>
   ))}
 </div>
@@ -156,6 +166,7 @@ function FreelancerProfile() {
               <form onSubmit={handleSubmit(onSubmit)}>
                 <input type="file" {...register("image")} className="mb-2" required />
                 <input type="text" {...register("description")} placeholder="Description" className="mb-2 p-2 border border-gray-300 rounded w-full" required />
+                <input type="text" {...register("bigdescription")} placeholder="Description" className="mb-2 p-2 border border-gray-300 rounded w-full" required />
                 <div className="flex space-x-4">
                   <button type="submit" className="bg-green-500 px-4 py-2 rounded text-white">Save</button>
                   <button type="button" onClick={handleClose} className="bg-gray-500 px-4 py-2 rounded text-white">Cancel</button>
@@ -166,11 +177,32 @@ function FreelancerProfile() {
         )}
               
               {isView && selectedItem && (
-  <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-50'>
-    <div className="bg-white p-6 rounded-lg shadow-xl text-black w-96 flex flex-col items-center">
-      <button className='self-end text-red-500' onClick={handleViews}>✖</button>
-      <img src={selectedItem.image} alt="Uploaded" className="w-48 h-48 rounded-lg object-cover shadow-lg" />
-      <p className="text-sm text-center font-semibold mt-2">{selectedItem.description}</p>
+  <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 p-4">
+    <div className="bg-white rounded-lg shadow-2xl flex flex-col md:flex-row w-full max-w-3xl">
+      
+      {/* Left Section: Image & Actions */}
+      <div className="flex flex-col items-center p-6 w-full md:w-1/2 border-r border-gray-300">
+        <button className="self-end text-red-500 text-xl" onClick={handleViews}>✖</button>
+        <img src={selectedItem.image} alt="Uploaded" className="w-48 h-48 rounded-lg object-cover shadow-md" />
+        <p className="text-sm text-center font-semibold mt-2">{selectedItem.description}</p>
+        <button 
+          className="mt-4 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg shadow-md transition duration-300"
+          onClick={() => handleDelete(selectedItem.id)}
+        >
+          Delete
+        </button>
+      </div>
+
+      {/* Right Section: Properly Wrapped Big Description */}
+      <div className="flex flex-col justify-center items-center p-6 w-full md:w-1/2">
+      <p className="text-gray-800 text-sm font-semibold text-center w-full max-w-xs break-words overflow-hidden text-ellipsis">
+          {selectedItem.description}
+        </p>  
+      <p className="text-gray-800 text-sm font-semibold text-center mt-7 w-full max-w-xs break-words overflow-hidden text-ellipsis">
+          {selectedItem.bigdescription}
+        </p>  
+      </div>
+
     </div>
   </div>
 )}
@@ -180,11 +212,11 @@ function FreelancerProfile() {
             <div className="bg-white text-black p-6 rounded-lg shadow-xl">
               <h2 className="text-lg font-bold mb-4">Edit Profile</h2>
               <form onSubmit={handleSubmit(handleEditSubmit)}>
-                <input type="text" {...register("name")} defaultValue={profileData.name} className="mb-2 p-2 border border-gray-300 rounded w-full" required />
-                <input type="text" {...register("role")} defaultValue={profileData.role} className="mb-2 p-2 border border-gray-300 rounded w-full" required />
-                <input type="email" {...register("email")} defaultValue={profileData.email} className="mb-2 p-2 border border-gray-300 rounded w-full cursor-pointer" required />
-                 <input type="number" {...register("phone")} defaultValue={profileData.phone} className="mb-2 p-2 border border-gray-300 rounded w-full" required />
-                <textarea {...register("description")} defaultValue={profileData.description} className="mb-2 p-2 border border-gray-300 rounded w-full" required />
+                <input type="text" {...register("name")} defaultValue={profileData.name}  placeholder='Name' className="mb-2 p-2 border border-gray-300 rounded w-full" required />
+                <input type="text" {...register("role")} defaultValue={profileData.role}  placeholder='Role' className="mb-2 p-2 border border-gray-300 rounded w-full" required />
+                <input type="email" {...register("email")} defaultValue={profileData.email}  placeholder='Email' className="mb-2 p-2 border border-gray-300 rounded w-full cursor-pointer" required />
+                 <input type="number" {...register("phone")} defaultValue={profileData.phone} placeholder='Phone number' className="mb-2 p-2 border border-gray-300 rounded w-full" required />
+                <textarea {...register("description")} defaultValue={profileData.description}  placeholder='Description' className="mb-2 p-2 border border-gray-300 rounded w-full" required />
                 <div className="flex space-x-4">
                   <button type="submit" className="bg-blue-500 px-4 py-2 rounded text-white">Save</button>
                   <button type="button" onClick={handleEditClose} className="bg-gray-500 px-4 py-2 rounded text-white">Cancel</button>

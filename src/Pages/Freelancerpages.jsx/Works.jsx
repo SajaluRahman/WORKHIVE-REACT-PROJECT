@@ -470,7 +470,7 @@ function FreelancerHome() {
       <div className="flex-1 p-4 md:px-52 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6  max-h-[80vh] no-scrollbar overflow-scroll">
         {sortedJobs.map((job) => (
           <div onClick={() => infoPage(job)} key={job.id} className="bg-white cursor-pointer hover:scale-105 transition-all hover:shadow-xl ease-in-out shadow-md rounded-lg overflow-hidden p-3">
-            <img src={job.image} alt={`Job: ${job.title}`} className="w-full h-40 sm:h-48 object-cover rounded-md" />
+            <img src={job.image} alt={`Job: ${job.title}`} className="w-full h-80 sm:h-48 object-cover rounded-md" />
             <div className="p-3">
               <div className="flex items-center space-x-2">
                 <img src={job.userImage} alt={job.user} className="w-8 h-8 rounded-full border border-gray-300" />
