@@ -1,38 +1,32 @@
-import React,{lazy, Suspense} from 'react'
-import { Routes, Route } from "react-router-dom";
+// import React, { lazy, Suspense } from 'react';
+// import { Routes, Route } from 'react-router-dom';
+// import ProtectedRoute from './ProtectedRoute';
 
-const UserHome = lazy(()=> import( '../../Pages/Freelancerpages.jsx/Works'));
-import FreelancerProfile from '../../Pages/Freelancerpages.jsx/FreelancerProfile';
-import ProgressionTracker from '../../Pages/Freelancerpages.jsx/ProgressionTracker';
-import NotePad from '../../Pages/Freelancerpages.jsx/NotePad';
-import FreelancerHome from '../../Pages/Freelancerpages.jsx/Works';
-import Info from '../../Pages/Freelancerpages.jsx/Info';
+// const FreelancerHome = lazy(() => import('../../Pages/Freelancerpages.jsx/Works'));
+// import FreelancerProfile from '../../Pages/Freelancerpages.jsx/FreelancerProfile';
+// import ProgressionTracker from '../../Pages/Freelancerpages.jsx/ProgressionTracker';
+// import NotePad from '../../Pages/Freelancerpages.jsx/NotePad';
+// import Info from '../../Pages/Freelancerpages.jsx/Info';
 
+// function FreelancerRoutes() {
+//   return (
+//     <Routes>
+//       <Route
+//         path="/freelanceworks"
+//         element={
+//           <ProtectedRoute allowedRoles={['freelancer']}>
+//             <Suspense fallback={<div className="h-screen text-4xl flex justify-center items-center">Loading...</div>}>
+//               <FreelancerHome />
+//             </Suspense>
+//           </ProtectedRoute>
+//         }
+//       />
+//       <Route path="/freelancerprofile" element={<ProtectedRoute allowedRoles={['freelancer']}><FreelancerProfile /></ProtectedRoute>} />
+//       <Route path="/progressiontracker" element={<ProtectedRoute allowedRoles={['freelancer']}><ProgressionTracker /></ProtectedRoute>} />
+//       <Route path="/notepad" element={<ProtectedRoute allowedRoles={['freelancer']}><NotePad /></ProtectedRoute>} />
+//       <Route path="/info" element={<ProtectedRoute allowedRoles={['freelancer']}><Info /></ProtectedRoute>} />
+//     </Routes>
+//   );
+// }
 
-function FreelancerRoutes() {
-  return (
-    <div>
-         
-     
-      
-     <Routes>
-     <Route path="/freelanceworks" element={
-      <Suspense fallback={<div className=' h-screen text-4xl flex justify-center items-center'>Loading...</div>}>
-      <FreelancerHome /></Suspense>
-      } />
-     <Route path="/freelancerprofile" element={<FreelancerProfile />} />
-     <Route path="/progressiontracker" element={<ProgressionTracker />} />
-     <Route path="/notepad" element={<NotePad />} />
-     <Route path="/info" element={<Info />} />
-     
-  
-   
-      
-     </Routes>
-   
- 
-    </div>
-  )
-}
-
-export default FreelancerRoutes
+// export default FreelancerRoutes;

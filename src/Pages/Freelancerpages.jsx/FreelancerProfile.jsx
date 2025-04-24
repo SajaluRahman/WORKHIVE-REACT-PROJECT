@@ -108,7 +108,12 @@ function FreelancerProfile() {
       <Navbar3 />
       <div className="min-h-screen bg-white text-black pt-20 p-4 flex flex-col items-center">
       <div className="max-w-4xl w-full bg-gray-100 mt-10 p-4 rounded-xl shadow-xl flex items-center border border-gray-300 relative">
-  <img src={img1} alt="Profile" className="w-24 h-24 rounded-full border-4border-gray-300 shadow-md mr-6" />
+      <img
+  src={profileData.image}
+  alt="Profile"
+  className="w-24 h-24 rounded-full border-4 border-gray-300 shadow-md mr-6"
+/>
+
   
   <div className="flex-1">
     <h2 className="text-xl font-bold text-black">{profileData.name}</h2>
@@ -213,6 +218,7 @@ function FreelancerProfile() {
               <h2 className="text-lg font-bold mb-4">Edit Profile</h2>
               <form onSubmit={handleSubmit(handleEditSubmit)}>
                 <input type="text" {...register("name")} defaultValue={profileData.name}  placeholder='Name' className="mb-2 p-2 border border-gray-300 rounded w-full" required />
+                <input type="file"    accept="image/*"{...register("image")} defaultValue={profileData.image}  placeholder='image' className="mb-2 p-2 border border-gray-300 rounded w-full" required />
                 <input type="text" {...register("role")} defaultValue={profileData.role}  placeholder='Role' className="mb-2 p-2 border border-gray-300 rounded w-full" required />
                 <input type="email" {...register("email")} defaultValue={profileData.email}  placeholder='Email' className="mb-2 p-2 border border-gray-300 rounded w-full cursor-pointer" required />
                  <input type="number" {...register("phone")} defaultValue={profileData.phone} placeholder='Phone number' className="mb-2 p-2 border border-gray-300 rounded w-full" required />

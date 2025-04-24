@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faRightToBracket, faStar } from "@fortawesome/free-solid-svg-icons";
-import { Navbar3 } from "../../Components/Common/CommonComponents/Navbar";
+import { Navbar3, Navbar4 } from "../../Components/Common/CommonComponents/Navbar";
 import { Sidebar } from "../../Components/FreelancerComponents/Sidebar";
 import "../../App.css";
 import img from "../../images/ClientImages/pexels-moose-photos-170195-1036623.jpg";
@@ -422,7 +422,7 @@ function Freelancers() {
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-100">
-      <Navbar3 />
+      <Navbar4 />
 
       {/* Sidebar Toggle Button */}
       <button onClick={() => setSidebarOpen(!sidebarOpen)} className="text-xl fixed top-12 left-0 z-50 text-white p-2 px-3 bg-[#141b36] rounded-r-lg shadow-md">

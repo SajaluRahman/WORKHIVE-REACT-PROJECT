@@ -1,36 +1,43 @@
-import React from 'react'
+// import React from 'react';
+// import { Routes, Route } from 'react-router-dom';
 
+// import LandingPage from '../Pages/CommonPages/LandingPage';
+// import Getting from '../Pages/CommonPages/Getting';
+// import Login from '../Pages/CommonPages/Login';
+// import SignUp from '../Pages/CommonPages/SignUp';
+// import Chat from '../Pages/CommonPages/Chat';
+// import ClientHome from '../Pages/CommonPages/ClientHome';
+// import FreelancerHome from '../Pages/CommonPages/FreelancerHome';
+// import ProtectedRoute from './ProtectedRoute'; // Import here
 
-import Getting from '../Pages/CommonPages/Getting';
-import Login from '../Pages/CommonPages/Login';
-import SignUp from '../Pages/CommonPages/SignUp';
-import Chat from '../Pages/CommonPages/Chat';
-import { Routes, Route } from 'react-router-dom';
-import ClientHome from '../Pages/CommonPages/ClientHome';
-import FreelancerHome from '../Pages/CommonPages/FreelancerHome';
-import LandingPage from '../Pages/CommonPages/LandingPage';
+// function CommonRoutes() {
+//   return (
+//     <Routes>
+//       <Route path="/" element={<LandingPage />} />
+//       <Route path="/getting" element={<Getting />} />
+//       <Route path="/login" element={<Login />} />
+//       <Route path="/signup" element={<SignUp />} />
+//       <Route path="/chat" element={<Chat />} />
 
+//       {/* Role-based protected routes */}
+//       <Route
+//         path="/freelancehome"
+//         element={
+//           <ProtectedRoute allowedRoles={['freelancer']}>
+//             <FreelancerHome />
+//           </ProtectedRoute>
+//         }
+//       />
+//       <Route
+//         path="/clienthome"
+//         element={
+//           <ProtectedRoute allowedRoles={['client']}>
+//             <ClientHome />
+//           </ProtectedRoute>
+//         }
+//       />
+//     </Routes>
+//   );
+// }
 
-function CommonRoutes() {
-  return (
-    <div> <>
-     
-      
-    <Routes>
-    <Route path="/" element={<LandingPage />} />
-
-    <Route path="/freelancehome" element={<FreelancerHome />} />
-    <Route path="/clienthome" element={<ClientHome />} />
-    <Route path="/signup" element={<SignUp />} />
-    <Route path="/getting" element={<Getting />} />
-    <Route path="/login" element={<Login />} />
-    <Route path="/chat" element={<Chat />} />
-  
-     
-    </Routes>
-  
-</></div>
-  )
-}
-
-export default CommonRoutes
+// export default CommonRoutes;
