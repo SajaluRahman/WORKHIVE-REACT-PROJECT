@@ -409,8 +409,8 @@ export const Navbar4 = () => {
           </div>
           
           <div className="flex items-center space-x-2">
-            <FontAwesomeIcon icon={faUser} className="cursor-pointer hover:text-gray-300  text-2xl" />
-            <span>Profile</span>
+          <Link to="/clientprofile"><FontAwesomeIcon icon={faUser} className="cursor-pointer hover:text-gray-300  text-2xl" />
+            <span>Profile</span></Link>
           </div>
         </div>
       </div>
