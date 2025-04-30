@@ -98,7 +98,7 @@ function AddingPost() {
       images.forEach((img) => formData.append('images', img));
   
       try {
-        const response = await axios.post('http://localhost:4004/api/post/add-post', formData, {
+        const response = await axios.post('https://workhive-project-backend-6.onrender.com/api/post/add-post', formData, {
           headers: { 'Content-Type': 'multipart/form-data' },
         });
         setSuccessMessage('Post created successfully!');

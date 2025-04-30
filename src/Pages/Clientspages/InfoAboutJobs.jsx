@@ -15,7 +15,7 @@ function InfoAboutJobs() {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const res = await axios.get(`http://localhost:4004/api/post/single-post/${id}`);
+        const res = await axios.get(`https://workhive-project-backend-6.onrender.com/api/post/single-post/${id}`);
         if (res.data && res.data.post) {
           setPost(res.data.post);
         } else {
